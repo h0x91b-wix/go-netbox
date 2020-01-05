@@ -103,6 +103,10 @@ type CircuitsCircuitsListParams struct {
 	ProviderID *string
 	/*Q*/
 	Q *string
+	/*Region*/
+	Region *string
+	/*RegionID*/
+	RegionID *string
 	/*Site*/
 	Site *string
 	/*SiteID*/
@@ -259,6 +263,28 @@ func (o *CircuitsCircuitsListParams) WithQ(q *string) *CircuitsCircuitsListParam
 // SetQ adds the q to the circuits circuits list params
 func (o *CircuitsCircuitsListParams) SetQ(q *string) {
 	o.Q = q
+}
+
+// WithRegion adds the region to the circuits circuits list params
+func (o *CircuitsCircuitsListParams) WithRegion(region *string) *CircuitsCircuitsListParams {
+	o.SetRegion(region)
+	return o
+}
+
+// SetRegion adds the region to the circuits circuits list params
+func (o *CircuitsCircuitsListParams) SetRegion(region *string) {
+	o.Region = region
+}
+
+// WithRegionID adds the regionID to the circuits circuits list params
+func (o *CircuitsCircuitsListParams) WithRegionID(regionID *string) *CircuitsCircuitsListParams {
+	o.SetRegionID(regionID)
+	return o
+}
+
+// SetRegionID adds the regionId to the circuits circuits list params
+func (o *CircuitsCircuitsListParams) SetRegionID(regionID *string) {
+	o.RegionID = regionID
 }
 
 // WithSite adds the site to the circuits circuits list params
@@ -517,6 +543,38 @@ func (o *CircuitsCircuitsListParams) WriteToRequest(r runtime.ClientRequest, reg
 		qQ := qrQ
 		if qQ != "" {
 			if err := r.SetQueryParam("q", qQ); err != nil {
+				return err
+			}
+		}
+
+	}
+
+	if o.Region != nil {
+
+		// query param region
+		var qrRegion string
+		if o.Region != nil {
+			qrRegion = *o.Region
+		}
+		qRegion := qrRegion
+		if qRegion != "" {
+			if err := r.SetQueryParam("region", qRegion); err != nil {
+				return err
+			}
+		}
+
+	}
+
+	if o.RegionID != nil {
+
+		// query param region_id
+		var qrRegionID string
+		if o.RegionID != nil {
+			qrRegionID = *o.RegionID
+		}
+		qRegionID := qrRegionID
+		if qRegionID != "" {
+			if err := r.SetQueryParam("region_id", qRegionID); err != nil {
 				return err
 			}
 		}

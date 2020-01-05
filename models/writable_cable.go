@@ -61,34 +61,34 @@ type WritableCable struct {
 
 	// Termination a
 	// Read Only: true
-	TerminationA map[string]string `json:"termination_a,omitempty"`
+	Terminationa map[string]string `json:"termination_a,omitempty"`
 
 	// Termination a id
 	// Required: true
 	// Maximum: 2.147483647e+09
 	// Minimum: 0
-	TerminationAID *int64 `json:"termination_a_id"`
+	TerminationaID *int64 `json:"termination_a_id"`
 
 	// Termination a type
 	// Required: true
-	TerminationAType *string `json:"termination_a_type"`
+	TerminationaType *string `json:"termination_a_type"`
 
 	// Termination b
 	// Read Only: true
-	TerminationB map[string]string `json:"termination_b,omitempty"`
+	Terminationb map[string]string `json:"termination_b,omitempty"`
 
 	// Termination b id
 	// Required: true
 	// Maximum: 2.147483647e+09
 	// Minimum: 0
-	TerminationBID *int64 `json:"termination_b_id"`
+	TerminationbID *int64 `json:"termination_b_id"`
 
 	// Termination b type
 	// Required: true
-	TerminationBType *string `json:"termination_b_type"`
+	TerminationbType *string `json:"termination_b_type"`
 
 	// Type
-	// Enum: [1300 1500 1510 1600 1610 1700 1800 1810 3000 3010 3020 3030 3040 3500 3510 3520 3800 5000]
+	// Enum: [1300 1500 1510 1600 1610 1700 1800 1810 1900 3000 3010 3020 3030 3040 3500 3510 3520 3800 5000]
 	Type *int64 `json:"type,omitempty"`
 }
 
@@ -116,19 +116,19 @@ func (m *WritableCable) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
-	if err := m.validateTerminationAID(formats); err != nil {
+	if err := m.validateTerminationaID(formats); err != nil {
 		res = append(res, err)
 	}
 
-	if err := m.validateTerminationAType(formats); err != nil {
+	if err := m.validateTerminationaType(formats); err != nil {
 		res = append(res, err)
 	}
 
-	if err := m.validateTerminationBID(formats); err != nil {
+	if err := m.validateTerminationbID(formats); err != nil {
 		res = append(res, err)
 	}
 
-	if err := m.validateTerminationBType(formats); err != nil {
+	if err := m.validateTerminationbType(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -257,52 +257,52 @@ func (m *WritableCable) validateStatus(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *WritableCable) validateTerminationAID(formats strfmt.Registry) error {
+func (m *WritableCable) validateTerminationaID(formats strfmt.Registry) error {
 
-	if err := validate.Required("termination_a_id", "body", m.TerminationAID); err != nil {
+	if err := validate.Required("termination_a_id", "body", m.TerminationaID); err != nil {
 		return err
 	}
 
-	if err := validate.MinimumInt("termination_a_id", "body", int64(*m.TerminationAID), 0, false); err != nil {
+	if err := validate.MinimumInt("termination_a_id", "body", int64(*m.TerminationaID), 0, false); err != nil {
 		return err
 	}
 
-	if err := validate.MaximumInt("termination_a_id", "body", int64(*m.TerminationAID), 2.147483647e+09, false); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-func (m *WritableCable) validateTerminationAType(formats strfmt.Registry) error {
-
-	if err := validate.Required("termination_a_type", "body", m.TerminationAType); err != nil {
+	if err := validate.MaximumInt("termination_a_id", "body", int64(*m.TerminationaID), 2.147483647e+09, false); err != nil {
 		return err
 	}
 
 	return nil
 }
 
-func (m *WritableCable) validateTerminationBID(formats strfmt.Registry) error {
+func (m *WritableCable) validateTerminationaType(formats strfmt.Registry) error {
 
-	if err := validate.Required("termination_b_id", "body", m.TerminationBID); err != nil {
-		return err
-	}
-
-	if err := validate.MinimumInt("termination_b_id", "body", int64(*m.TerminationBID), 0, false); err != nil {
-		return err
-	}
-
-	if err := validate.MaximumInt("termination_b_id", "body", int64(*m.TerminationBID), 2.147483647e+09, false); err != nil {
+	if err := validate.Required("termination_a_type", "body", m.TerminationaType); err != nil {
 		return err
 	}
 
 	return nil
 }
 
-func (m *WritableCable) validateTerminationBType(formats strfmt.Registry) error {
+func (m *WritableCable) validateTerminationbID(formats strfmt.Registry) error {
 
-	if err := validate.Required("termination_b_type", "body", m.TerminationBType); err != nil {
+	if err := validate.Required("termination_b_id", "body", m.TerminationbID); err != nil {
+		return err
+	}
+
+	if err := validate.MinimumInt("termination_b_id", "body", int64(*m.TerminationbID), 0, false); err != nil {
+		return err
+	}
+
+	if err := validate.MaximumInt("termination_b_id", "body", int64(*m.TerminationbID), 2.147483647e+09, false); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *WritableCable) validateTerminationbType(formats strfmt.Registry) error {
+
+	if err := validate.Required("termination_b_type", "body", m.TerminationbType); err != nil {
 		return err
 	}
 
@@ -313,7 +313,7 @@ var writableCableTypeTypePropEnum []interface{}
 
 func init() {
 	var res []int64
-	if err := json.Unmarshal([]byte(`[1300,1500,1510,1600,1610,1700,1800,1810,3000,3010,3020,3030,3040,3500,3510,3520,3800,5000]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`[1300,1500,1510,1600,1610,1700,1800,1810,1900,3000,3010,3020,3030,3040,3500,3510,3520,3800,5000]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

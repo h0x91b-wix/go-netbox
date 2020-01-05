@@ -102,6 +102,8 @@ type VirtualizationVirtualMachinesListParams struct {
 
 	*/
 	Limit *int64
+	/*MacAddress*/
+	MacAddress *string
 	/*Memory*/
 	Memory *string
 	/*Name*/
@@ -290,6 +292,17 @@ func (o *VirtualizationVirtualMachinesListParams) WithLimit(limit *int64) *Virtu
 // SetLimit adds the limit to the virtualization virtual machines list params
 func (o *VirtualizationVirtualMachinesListParams) SetLimit(limit *int64) {
 	o.Limit = limit
+}
+
+// WithMacAddress adds the macAddress to the virtualization virtual machines list params
+func (o *VirtualizationVirtualMachinesListParams) WithMacAddress(macAddress *string) *VirtualizationVirtualMachinesListParams {
+	o.SetMacAddress(macAddress)
+	return o
+}
+
+// SetMacAddress adds the macAddress to the virtualization virtual machines list params
+func (o *VirtualizationVirtualMachinesListParams) SetMacAddress(macAddress *string) {
+	o.MacAddress = macAddress
 }
 
 // WithMemory adds the memory to the virtualization virtual machines list params
@@ -663,6 +676,22 @@ func (o *VirtualizationVirtualMachinesListParams) WriteToRequest(r runtime.Clien
 		qLimit := swag.FormatInt64(qrLimit)
 		if qLimit != "" {
 			if err := r.SetQueryParam("limit", qLimit); err != nil {
+				return err
+			}
+		}
+
+	}
+
+	if o.MacAddress != nil {
+
+		// query param mac_address
+		var qrMacAddress string
+		if o.MacAddress != nil {
+			qrMacAddress = *o.MacAddress
+		}
+		qMacAddress := qrMacAddress
+		if qMacAddress != "" {
+			if err := r.SetQueryParam("mac_address", qMacAddress); err != nil {
 				return err
 			}
 		}

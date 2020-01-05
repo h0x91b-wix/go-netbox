@@ -20,6 +20,8 @@ package extras
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"fmt"
+
 	"github.com/go-openapi/runtime"
 
 	strfmt "github.com/go-openapi/strfmt"
@@ -53,7 +55,7 @@ func (a *Client) ExtrasChoicesList(params *ExtrasChoicesListParams, authInfo run
 		PathPattern:        "/extras/_choices/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
+		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &ExtrasChoicesListReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -63,8 +65,14 @@ func (a *Client) ExtrasChoicesList(params *ExtrasChoicesListParams, authInfo run
 	if err != nil {
 		return nil, err
 	}
-	return result.(*ExtrasChoicesListOK), nil
-
+	success, ok := result.(*ExtrasChoicesListOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for extras__choices_list: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -82,7 +90,7 @@ func (a *Client) ExtrasChoicesRead(params *ExtrasChoicesReadParams, authInfo run
 		PathPattern:        "/extras/_choices/{id}/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
+		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &ExtrasChoicesReadReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -92,8 +100,14 @@ func (a *Client) ExtrasChoicesRead(params *ExtrasChoicesReadParams, authInfo run
 	if err != nil {
 		return nil, err
 	}
-	return result.(*ExtrasChoicesReadOK), nil
-
+	success, ok := result.(*ExtrasChoicesReadOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for extras__choices_read: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -111,7 +125,7 @@ func (a *Client) ExtrasCustomFieldChoicesList(params *ExtrasCustomFieldChoicesLi
 		PathPattern:        "/extras/_custom_field_choices/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
+		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &ExtrasCustomFieldChoicesListReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -121,8 +135,14 @@ func (a *Client) ExtrasCustomFieldChoicesList(params *ExtrasCustomFieldChoicesLi
 	if err != nil {
 		return nil, err
 	}
-	return result.(*ExtrasCustomFieldChoicesListOK), nil
-
+	success, ok := result.(*ExtrasCustomFieldChoicesListOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for extras__custom_field_choices_list: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -140,7 +160,7 @@ func (a *Client) ExtrasCustomFieldChoicesRead(params *ExtrasCustomFieldChoicesRe
 		PathPattern:        "/extras/_custom_field_choices/{id}/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
+		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &ExtrasCustomFieldChoicesReadReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -150,8 +170,14 @@ func (a *Client) ExtrasCustomFieldChoicesRead(params *ExtrasCustomFieldChoicesRe
 	if err != nil {
 		return nil, err
 	}
-	return result.(*ExtrasCustomFieldChoicesReadOK), nil
-
+	success, ok := result.(*ExtrasCustomFieldChoicesReadOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for extras__custom_field_choices_read: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -169,7 +195,7 @@ func (a *Client) ExtrasConfigContextsCreate(params *ExtrasConfigContextsCreatePa
 		PathPattern:        "/extras/config-contexts/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
+		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &ExtrasConfigContextsCreateReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -179,8 +205,14 @@ func (a *Client) ExtrasConfigContextsCreate(params *ExtrasConfigContextsCreatePa
 	if err != nil {
 		return nil, err
 	}
-	return result.(*ExtrasConfigContextsCreateCreated), nil
-
+	success, ok := result.(*ExtrasConfigContextsCreateCreated)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for extras_config-contexts_create: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -198,7 +230,7 @@ func (a *Client) ExtrasConfigContextsDelete(params *ExtrasConfigContextsDeletePa
 		PathPattern:        "/extras/config-contexts/{id}/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
+		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &ExtrasConfigContextsDeleteReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -208,8 +240,14 @@ func (a *Client) ExtrasConfigContextsDelete(params *ExtrasConfigContextsDeletePa
 	if err != nil {
 		return nil, err
 	}
-	return result.(*ExtrasConfigContextsDeleteNoContent), nil
-
+	success, ok := result.(*ExtrasConfigContextsDeleteNoContent)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for extras_config-contexts_delete: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -227,7 +265,7 @@ func (a *Client) ExtrasConfigContextsList(params *ExtrasConfigContextsListParams
 		PathPattern:        "/extras/config-contexts/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
+		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &ExtrasConfigContextsListReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -237,8 +275,14 @@ func (a *Client) ExtrasConfigContextsList(params *ExtrasConfigContextsListParams
 	if err != nil {
 		return nil, err
 	}
-	return result.(*ExtrasConfigContextsListOK), nil
-
+	success, ok := result.(*ExtrasConfigContextsListOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for extras_config-contexts_list: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -256,7 +300,7 @@ func (a *Client) ExtrasConfigContextsPartialUpdate(params *ExtrasConfigContextsP
 		PathPattern:        "/extras/config-contexts/{id}/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
+		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &ExtrasConfigContextsPartialUpdateReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -266,8 +310,14 @@ func (a *Client) ExtrasConfigContextsPartialUpdate(params *ExtrasConfigContextsP
 	if err != nil {
 		return nil, err
 	}
-	return result.(*ExtrasConfigContextsPartialUpdateOK), nil
-
+	success, ok := result.(*ExtrasConfigContextsPartialUpdateOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for extras_config-contexts_partial_update: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -285,7 +335,7 @@ func (a *Client) ExtrasConfigContextsRead(params *ExtrasConfigContextsReadParams
 		PathPattern:        "/extras/config-contexts/{id}/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
+		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &ExtrasConfigContextsReadReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -295,8 +345,14 @@ func (a *Client) ExtrasConfigContextsRead(params *ExtrasConfigContextsReadParams
 	if err != nil {
 		return nil, err
 	}
-	return result.(*ExtrasConfigContextsReadOK), nil
-
+	success, ok := result.(*ExtrasConfigContextsReadOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for extras_config-contexts_read: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -314,7 +370,7 @@ func (a *Client) ExtrasConfigContextsUpdate(params *ExtrasConfigContextsUpdatePa
 		PathPattern:        "/extras/config-contexts/{id}/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
+		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &ExtrasConfigContextsUpdateReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -324,8 +380,14 @@ func (a *Client) ExtrasConfigContextsUpdate(params *ExtrasConfigContextsUpdatePa
 	if err != nil {
 		return nil, err
 	}
-	return result.(*ExtrasConfigContextsUpdateOK), nil
-
+	success, ok := result.(*ExtrasConfigContextsUpdateOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for extras_config-contexts_update: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -343,7 +405,7 @@ func (a *Client) ExtrasExportTemplatesCreate(params *ExtrasExportTemplatesCreate
 		PathPattern:        "/extras/export-templates/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
+		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &ExtrasExportTemplatesCreateReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -353,8 +415,14 @@ func (a *Client) ExtrasExportTemplatesCreate(params *ExtrasExportTemplatesCreate
 	if err != nil {
 		return nil, err
 	}
-	return result.(*ExtrasExportTemplatesCreateCreated), nil
-
+	success, ok := result.(*ExtrasExportTemplatesCreateCreated)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for extras_export-templates_create: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -372,7 +440,7 @@ func (a *Client) ExtrasExportTemplatesDelete(params *ExtrasExportTemplatesDelete
 		PathPattern:        "/extras/export-templates/{id}/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
+		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &ExtrasExportTemplatesDeleteReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -382,8 +450,14 @@ func (a *Client) ExtrasExportTemplatesDelete(params *ExtrasExportTemplatesDelete
 	if err != nil {
 		return nil, err
 	}
-	return result.(*ExtrasExportTemplatesDeleteNoContent), nil
-
+	success, ok := result.(*ExtrasExportTemplatesDeleteNoContent)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for extras_export-templates_delete: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -401,7 +475,7 @@ func (a *Client) ExtrasExportTemplatesList(params *ExtrasExportTemplatesListPara
 		PathPattern:        "/extras/export-templates/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
+		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &ExtrasExportTemplatesListReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -411,8 +485,14 @@ func (a *Client) ExtrasExportTemplatesList(params *ExtrasExportTemplatesListPara
 	if err != nil {
 		return nil, err
 	}
-	return result.(*ExtrasExportTemplatesListOK), nil
-
+	success, ok := result.(*ExtrasExportTemplatesListOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for extras_export-templates_list: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -430,7 +510,7 @@ func (a *Client) ExtrasExportTemplatesPartialUpdate(params *ExtrasExportTemplate
 		PathPattern:        "/extras/export-templates/{id}/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
+		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &ExtrasExportTemplatesPartialUpdateReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -440,8 +520,14 @@ func (a *Client) ExtrasExportTemplatesPartialUpdate(params *ExtrasExportTemplate
 	if err != nil {
 		return nil, err
 	}
-	return result.(*ExtrasExportTemplatesPartialUpdateOK), nil
-
+	success, ok := result.(*ExtrasExportTemplatesPartialUpdateOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for extras_export-templates_partial_update: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -459,7 +545,7 @@ func (a *Client) ExtrasExportTemplatesRead(params *ExtrasExportTemplatesReadPara
 		PathPattern:        "/extras/export-templates/{id}/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
+		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &ExtrasExportTemplatesReadReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -469,8 +555,14 @@ func (a *Client) ExtrasExportTemplatesRead(params *ExtrasExportTemplatesReadPara
 	if err != nil {
 		return nil, err
 	}
-	return result.(*ExtrasExportTemplatesReadOK), nil
-
+	success, ok := result.(*ExtrasExportTemplatesReadOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for extras_export-templates_read: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -488,7 +580,7 @@ func (a *Client) ExtrasExportTemplatesUpdate(params *ExtrasExportTemplatesUpdate
 		PathPattern:        "/extras/export-templates/{id}/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
+		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &ExtrasExportTemplatesUpdateReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -498,8 +590,14 @@ func (a *Client) ExtrasExportTemplatesUpdate(params *ExtrasExportTemplatesUpdate
 	if err != nil {
 		return nil, err
 	}
-	return result.(*ExtrasExportTemplatesUpdateOK), nil
-
+	success, ok := result.(*ExtrasExportTemplatesUpdateOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for extras_export-templates_update: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -517,7 +615,7 @@ func (a *Client) ExtrasGraphsCreate(params *ExtrasGraphsCreateParams, authInfo r
 		PathPattern:        "/extras/graphs/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
+		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &ExtrasGraphsCreateReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -527,8 +625,14 @@ func (a *Client) ExtrasGraphsCreate(params *ExtrasGraphsCreateParams, authInfo r
 	if err != nil {
 		return nil, err
 	}
-	return result.(*ExtrasGraphsCreateCreated), nil
-
+	success, ok := result.(*ExtrasGraphsCreateCreated)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for extras_graphs_create: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -546,7 +650,7 @@ func (a *Client) ExtrasGraphsDelete(params *ExtrasGraphsDeleteParams, authInfo r
 		PathPattern:        "/extras/graphs/{id}/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
+		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &ExtrasGraphsDeleteReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -556,8 +660,14 @@ func (a *Client) ExtrasGraphsDelete(params *ExtrasGraphsDeleteParams, authInfo r
 	if err != nil {
 		return nil, err
 	}
-	return result.(*ExtrasGraphsDeleteNoContent), nil
-
+	success, ok := result.(*ExtrasGraphsDeleteNoContent)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for extras_graphs_delete: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -575,7 +685,7 @@ func (a *Client) ExtrasGraphsList(params *ExtrasGraphsListParams, authInfo runti
 		PathPattern:        "/extras/graphs/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
+		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &ExtrasGraphsListReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -585,8 +695,14 @@ func (a *Client) ExtrasGraphsList(params *ExtrasGraphsListParams, authInfo runti
 	if err != nil {
 		return nil, err
 	}
-	return result.(*ExtrasGraphsListOK), nil
-
+	success, ok := result.(*ExtrasGraphsListOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for extras_graphs_list: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -604,7 +720,7 @@ func (a *Client) ExtrasGraphsPartialUpdate(params *ExtrasGraphsPartialUpdatePara
 		PathPattern:        "/extras/graphs/{id}/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
+		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &ExtrasGraphsPartialUpdateReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -614,8 +730,14 @@ func (a *Client) ExtrasGraphsPartialUpdate(params *ExtrasGraphsPartialUpdatePara
 	if err != nil {
 		return nil, err
 	}
-	return result.(*ExtrasGraphsPartialUpdateOK), nil
-
+	success, ok := result.(*ExtrasGraphsPartialUpdateOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for extras_graphs_partial_update: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -633,7 +755,7 @@ func (a *Client) ExtrasGraphsRead(params *ExtrasGraphsReadParams, authInfo runti
 		PathPattern:        "/extras/graphs/{id}/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
+		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &ExtrasGraphsReadReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -643,8 +765,14 @@ func (a *Client) ExtrasGraphsRead(params *ExtrasGraphsReadParams, authInfo runti
 	if err != nil {
 		return nil, err
 	}
-	return result.(*ExtrasGraphsReadOK), nil
-
+	success, ok := result.(*ExtrasGraphsReadOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for extras_graphs_read: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -662,7 +790,7 @@ func (a *Client) ExtrasGraphsUpdate(params *ExtrasGraphsUpdateParams, authInfo r
 		PathPattern:        "/extras/graphs/{id}/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
+		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &ExtrasGraphsUpdateReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -672,8 +800,14 @@ func (a *Client) ExtrasGraphsUpdate(params *ExtrasGraphsUpdateParams, authInfo r
 	if err != nil {
 		return nil, err
 	}
-	return result.(*ExtrasGraphsUpdateOK), nil
-
+	success, ok := result.(*ExtrasGraphsUpdateOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for extras_graphs_update: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -691,7 +825,7 @@ func (a *Client) ExtrasImageAttachmentsCreate(params *ExtrasImageAttachmentsCrea
 		PathPattern:        "/extras/image-attachments/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
+		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &ExtrasImageAttachmentsCreateReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -701,8 +835,14 @@ func (a *Client) ExtrasImageAttachmentsCreate(params *ExtrasImageAttachmentsCrea
 	if err != nil {
 		return nil, err
 	}
-	return result.(*ExtrasImageAttachmentsCreateCreated), nil
-
+	success, ok := result.(*ExtrasImageAttachmentsCreateCreated)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for extras_image-attachments_create: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -720,7 +860,7 @@ func (a *Client) ExtrasImageAttachmentsDelete(params *ExtrasImageAttachmentsDele
 		PathPattern:        "/extras/image-attachments/{id}/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
+		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &ExtrasImageAttachmentsDeleteReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -730,8 +870,14 @@ func (a *Client) ExtrasImageAttachmentsDelete(params *ExtrasImageAttachmentsDele
 	if err != nil {
 		return nil, err
 	}
-	return result.(*ExtrasImageAttachmentsDeleteNoContent), nil
-
+	success, ok := result.(*ExtrasImageAttachmentsDeleteNoContent)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for extras_image-attachments_delete: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -749,7 +895,7 @@ func (a *Client) ExtrasImageAttachmentsList(params *ExtrasImageAttachmentsListPa
 		PathPattern:        "/extras/image-attachments/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
+		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &ExtrasImageAttachmentsListReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -759,8 +905,14 @@ func (a *Client) ExtrasImageAttachmentsList(params *ExtrasImageAttachmentsListPa
 	if err != nil {
 		return nil, err
 	}
-	return result.(*ExtrasImageAttachmentsListOK), nil
-
+	success, ok := result.(*ExtrasImageAttachmentsListOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for extras_image-attachments_list: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -778,7 +930,7 @@ func (a *Client) ExtrasImageAttachmentsPartialUpdate(params *ExtrasImageAttachme
 		PathPattern:        "/extras/image-attachments/{id}/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
+		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &ExtrasImageAttachmentsPartialUpdateReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -788,8 +940,14 @@ func (a *Client) ExtrasImageAttachmentsPartialUpdate(params *ExtrasImageAttachme
 	if err != nil {
 		return nil, err
 	}
-	return result.(*ExtrasImageAttachmentsPartialUpdateOK), nil
-
+	success, ok := result.(*ExtrasImageAttachmentsPartialUpdateOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for extras_image-attachments_partial_update: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -807,7 +965,7 @@ func (a *Client) ExtrasImageAttachmentsRead(params *ExtrasImageAttachmentsReadPa
 		PathPattern:        "/extras/image-attachments/{id}/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
+		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &ExtrasImageAttachmentsReadReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -817,8 +975,14 @@ func (a *Client) ExtrasImageAttachmentsRead(params *ExtrasImageAttachmentsReadPa
 	if err != nil {
 		return nil, err
 	}
-	return result.(*ExtrasImageAttachmentsReadOK), nil
-
+	success, ok := result.(*ExtrasImageAttachmentsReadOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for extras_image-attachments_read: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -836,7 +1000,7 @@ func (a *Client) ExtrasImageAttachmentsUpdate(params *ExtrasImageAttachmentsUpda
 		PathPattern:        "/extras/image-attachments/{id}/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
+		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &ExtrasImageAttachmentsUpdateReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -846,8 +1010,14 @@ func (a *Client) ExtrasImageAttachmentsUpdate(params *ExtrasImageAttachmentsUpda
 	if err != nil {
 		return nil, err
 	}
-	return result.(*ExtrasImageAttachmentsUpdateOK), nil
-
+	success, ok := result.(*ExtrasImageAttachmentsUpdateOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for extras_image-attachments_update: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -865,7 +1035,7 @@ func (a *Client) ExtrasObjectChangesList(params *ExtrasObjectChangesListParams, 
 		PathPattern:        "/extras/object-changes/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
+		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &ExtrasObjectChangesListReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -875,8 +1045,14 @@ func (a *Client) ExtrasObjectChangesList(params *ExtrasObjectChangesListParams, 
 	if err != nil {
 		return nil, err
 	}
-	return result.(*ExtrasObjectChangesListOK), nil
-
+	success, ok := result.(*ExtrasObjectChangesListOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for extras_object-changes_list: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -894,7 +1070,7 @@ func (a *Client) ExtrasObjectChangesRead(params *ExtrasObjectChangesReadParams, 
 		PathPattern:        "/extras/object-changes/{id}/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
+		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &ExtrasObjectChangesReadReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -904,8 +1080,14 @@ func (a *Client) ExtrasObjectChangesRead(params *ExtrasObjectChangesReadParams, 
 	if err != nil {
 		return nil, err
 	}
-	return result.(*ExtrasObjectChangesReadOK), nil
-
+	success, ok := result.(*ExtrasObjectChangesReadOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for extras_object-changes_read: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -923,7 +1105,7 @@ func (a *Client) ExtrasReportsList(params *ExtrasReportsListParams, authInfo run
 		PathPattern:        "/extras/reports/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
+		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &ExtrasReportsListReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -933,8 +1115,14 @@ func (a *Client) ExtrasReportsList(params *ExtrasReportsListParams, authInfo run
 	if err != nil {
 		return nil, err
 	}
-	return result.(*ExtrasReportsListOK), nil
-
+	success, ok := result.(*ExtrasReportsListOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for extras_reports_list: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -952,7 +1140,7 @@ func (a *Client) ExtrasReportsRead(params *ExtrasReportsReadParams, authInfo run
 		PathPattern:        "/extras/reports/{id}/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
+		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &ExtrasReportsReadReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -962,8 +1150,14 @@ func (a *Client) ExtrasReportsRead(params *ExtrasReportsReadParams, authInfo run
 	if err != nil {
 		return nil, err
 	}
-	return result.(*ExtrasReportsReadOK), nil
-
+	success, ok := result.(*ExtrasReportsReadOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for extras_reports_read: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -981,7 +1175,7 @@ func (a *Client) ExtrasReportsRun(params *ExtrasReportsRunParams, authInfo runti
 		PathPattern:        "/extras/reports/{id}/run/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
+		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &ExtrasReportsRunReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -991,8 +1185,14 @@ func (a *Client) ExtrasReportsRun(params *ExtrasReportsRunParams, authInfo runti
 	if err != nil {
 		return nil, err
 	}
-	return result.(*ExtrasReportsRunCreated), nil
-
+	success, ok := result.(*ExtrasReportsRunCreated)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for extras_reports_run: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -1010,7 +1210,7 @@ func (a *Client) ExtrasTagsCreate(params *ExtrasTagsCreateParams, authInfo runti
 		PathPattern:        "/extras/tags/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
+		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &ExtrasTagsCreateReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -1020,8 +1220,14 @@ func (a *Client) ExtrasTagsCreate(params *ExtrasTagsCreateParams, authInfo runti
 	if err != nil {
 		return nil, err
 	}
-	return result.(*ExtrasTagsCreateCreated), nil
-
+	success, ok := result.(*ExtrasTagsCreateCreated)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for extras_tags_create: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -1039,7 +1245,7 @@ func (a *Client) ExtrasTagsDelete(params *ExtrasTagsDeleteParams, authInfo runti
 		PathPattern:        "/extras/tags/{id}/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
+		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &ExtrasTagsDeleteReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -1049,8 +1255,14 @@ func (a *Client) ExtrasTagsDelete(params *ExtrasTagsDeleteParams, authInfo runti
 	if err != nil {
 		return nil, err
 	}
-	return result.(*ExtrasTagsDeleteNoContent), nil
-
+	success, ok := result.(*ExtrasTagsDeleteNoContent)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for extras_tags_delete: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -1068,7 +1280,7 @@ func (a *Client) ExtrasTagsList(params *ExtrasTagsListParams, authInfo runtime.C
 		PathPattern:        "/extras/tags/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
+		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &ExtrasTagsListReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -1078,8 +1290,14 @@ func (a *Client) ExtrasTagsList(params *ExtrasTagsListParams, authInfo runtime.C
 	if err != nil {
 		return nil, err
 	}
-	return result.(*ExtrasTagsListOK), nil
-
+	success, ok := result.(*ExtrasTagsListOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for extras_tags_list: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -1097,7 +1315,7 @@ func (a *Client) ExtrasTagsPartialUpdate(params *ExtrasTagsPartialUpdateParams, 
 		PathPattern:        "/extras/tags/{id}/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
+		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &ExtrasTagsPartialUpdateReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -1107,8 +1325,14 @@ func (a *Client) ExtrasTagsPartialUpdate(params *ExtrasTagsPartialUpdateParams, 
 	if err != nil {
 		return nil, err
 	}
-	return result.(*ExtrasTagsPartialUpdateOK), nil
-
+	success, ok := result.(*ExtrasTagsPartialUpdateOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for extras_tags_partial_update: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -1126,7 +1350,7 @@ func (a *Client) ExtrasTagsRead(params *ExtrasTagsReadParams, authInfo runtime.C
 		PathPattern:        "/extras/tags/{id}/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
+		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &ExtrasTagsReadReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -1136,8 +1360,14 @@ func (a *Client) ExtrasTagsRead(params *ExtrasTagsReadParams, authInfo runtime.C
 	if err != nil {
 		return nil, err
 	}
-	return result.(*ExtrasTagsReadOK), nil
-
+	success, ok := result.(*ExtrasTagsReadOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for extras_tags_read: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -1155,7 +1385,7 @@ func (a *Client) ExtrasTagsUpdate(params *ExtrasTagsUpdateParams, authInfo runti
 		PathPattern:        "/extras/tags/{id}/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
+		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &ExtrasTagsUpdateReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -1165,8 +1395,14 @@ func (a *Client) ExtrasTagsUpdate(params *ExtrasTagsUpdateParams, authInfo runti
 	if err != nil {
 		return nil, err
 	}
-	return result.(*ExtrasTagsUpdateOK), nil
-
+	success, ok := result.(*ExtrasTagsUpdateOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for extras_tags_update: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -1184,7 +1420,7 @@ func (a *Client) ExtrasTopologyMapsCreate(params *ExtrasTopologyMapsCreateParams
 		PathPattern:        "/extras/topology-maps/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
+		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &ExtrasTopologyMapsCreateReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -1194,8 +1430,14 @@ func (a *Client) ExtrasTopologyMapsCreate(params *ExtrasTopologyMapsCreateParams
 	if err != nil {
 		return nil, err
 	}
-	return result.(*ExtrasTopologyMapsCreateCreated), nil
-
+	success, ok := result.(*ExtrasTopologyMapsCreateCreated)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for extras_topology-maps_create: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -1213,7 +1455,7 @@ func (a *Client) ExtrasTopologyMapsDelete(params *ExtrasTopologyMapsDeleteParams
 		PathPattern:        "/extras/topology-maps/{id}/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
+		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &ExtrasTopologyMapsDeleteReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -1223,8 +1465,14 @@ func (a *Client) ExtrasTopologyMapsDelete(params *ExtrasTopologyMapsDeleteParams
 	if err != nil {
 		return nil, err
 	}
-	return result.(*ExtrasTopologyMapsDeleteNoContent), nil
-
+	success, ok := result.(*ExtrasTopologyMapsDeleteNoContent)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for extras_topology-maps_delete: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -1242,7 +1490,7 @@ func (a *Client) ExtrasTopologyMapsList(params *ExtrasTopologyMapsListParams, au
 		PathPattern:        "/extras/topology-maps/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
+		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &ExtrasTopologyMapsListReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -1252,8 +1500,14 @@ func (a *Client) ExtrasTopologyMapsList(params *ExtrasTopologyMapsListParams, au
 	if err != nil {
 		return nil, err
 	}
-	return result.(*ExtrasTopologyMapsListOK), nil
-
+	success, ok := result.(*ExtrasTopologyMapsListOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for extras_topology-maps_list: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -1271,7 +1525,7 @@ func (a *Client) ExtrasTopologyMapsPartialUpdate(params *ExtrasTopologyMapsParti
 		PathPattern:        "/extras/topology-maps/{id}/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
+		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &ExtrasTopologyMapsPartialUpdateReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -1281,8 +1535,14 @@ func (a *Client) ExtrasTopologyMapsPartialUpdate(params *ExtrasTopologyMapsParti
 	if err != nil {
 		return nil, err
 	}
-	return result.(*ExtrasTopologyMapsPartialUpdateOK), nil
-
+	success, ok := result.(*ExtrasTopologyMapsPartialUpdateOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for extras_topology-maps_partial_update: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -1300,7 +1560,7 @@ func (a *Client) ExtrasTopologyMapsRead(params *ExtrasTopologyMapsReadParams, au
 		PathPattern:        "/extras/topology-maps/{id}/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
+		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &ExtrasTopologyMapsReadReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -1310,8 +1570,14 @@ func (a *Client) ExtrasTopologyMapsRead(params *ExtrasTopologyMapsReadParams, au
 	if err != nil {
 		return nil, err
 	}
-	return result.(*ExtrasTopologyMapsReadOK), nil
-
+	success, ok := result.(*ExtrasTopologyMapsReadOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for extras_topology-maps_read: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -1329,7 +1595,7 @@ func (a *Client) ExtrasTopologyMapsRender(params *ExtrasTopologyMapsRenderParams
 		PathPattern:        "/extras/topology-maps/{id}/render/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
+		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &ExtrasTopologyMapsRenderReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -1339,8 +1605,14 @@ func (a *Client) ExtrasTopologyMapsRender(params *ExtrasTopologyMapsRenderParams
 	if err != nil {
 		return nil, err
 	}
-	return result.(*ExtrasTopologyMapsRenderOK), nil
-
+	success, ok := result.(*ExtrasTopologyMapsRenderOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for extras_topology-maps_render: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -1358,7 +1630,7 @@ func (a *Client) ExtrasTopologyMapsUpdate(params *ExtrasTopologyMapsUpdateParams
 		PathPattern:        "/extras/topology-maps/{id}/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
+		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &ExtrasTopologyMapsUpdateReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -1368,8 +1640,14 @@ func (a *Client) ExtrasTopologyMapsUpdate(params *ExtrasTopologyMapsUpdateParams
 	if err != nil {
 		return nil, err
 	}
-	return result.(*ExtrasTopologyMapsUpdateOK), nil
-
+	success, ok := result.(*ExtrasTopologyMapsUpdateOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for extras_topology-maps_update: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 // SetTransport changes the transport on the client

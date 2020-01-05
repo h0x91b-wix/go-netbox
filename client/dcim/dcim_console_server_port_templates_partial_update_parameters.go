@@ -31,7 +31,7 @@ import (
 
 	strfmt "github.com/go-openapi/strfmt"
 
-	models "github.com/netbox-community/go-netbox/netbox/models"
+	models "github.com/netbox-community/go-netbox/models"
 )
 
 // NewDcimConsoleServerPortTemplatesPartialUpdateParams creates a new DcimConsoleServerPortTemplatesPartialUpdateParams object

@@ -106,6 +106,8 @@ type DcimDevicesListParams struct {
 
 	*/
 	Limit *int64
+	/*LocalContextData*/
+	LocalContextData *string
 	/*MacAddress*/
 	MacAddress *string
 	/*Manufacturer*/
@@ -342,6 +344,17 @@ func (o *DcimDevicesListParams) WithLimit(limit *int64) *DcimDevicesListParams {
 // SetLimit adds the limit to the dcim devices list params
 func (o *DcimDevicesListParams) SetLimit(limit *int64) {
 	o.Limit = limit
+}
+
+// WithLocalContextData adds the localContextData to the dcim devices list params
+func (o *DcimDevicesListParams) WithLocalContextData(localContextData *string) *DcimDevicesListParams {
+	o.SetLocalContextData(localContextData)
+	return o
+}
+
+// SetLocalContextData adds the localContextData to the dcim devices list params
+func (o *DcimDevicesListParams) SetLocalContextData(localContextData *string) {
+	o.LocalContextData = localContextData
 }
 
 // WithMacAddress adds the macAddress to the dcim devices list params
@@ -890,6 +903,22 @@ func (o *DcimDevicesListParams) WriteToRequest(r runtime.ClientRequest, reg strf
 		qLimit := swag.FormatInt64(qrLimit)
 		if qLimit != "" {
 			if err := r.SetQueryParam("limit", qLimit); err != nil {
+				return err
+			}
+		}
+
+	}
+
+	if o.LocalContextData != nil {
+
+		// query param local_context_data
+		var qrLocalContextData string
+		if o.LocalContextData != nil {
+			qrLocalContextData = *o.LocalContextData
+		}
+		qLocalContextData := qrLocalContextData
+		if qLocalContextData != "" {
+			if err := r.SetQueryParam("local_context_data", qLocalContextData); err != nil {
 				return err
 			}
 		}

@@ -20,6 +20,8 @@ package virtualization
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"fmt"
+
 	"github.com/go-openapi/runtime"
 
 	strfmt "github.com/go-openapi/strfmt"
@@ -53,7 +55,7 @@ func (a *Client) VirtualizationChoicesList(params *VirtualizationChoicesListPara
 		PathPattern:        "/virtualization/_choices/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
+		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &VirtualizationChoicesListReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -63,8 +65,14 @@ func (a *Client) VirtualizationChoicesList(params *VirtualizationChoicesListPara
 	if err != nil {
 		return nil, err
 	}
-	return result.(*VirtualizationChoicesListOK), nil
-
+	success, ok := result.(*VirtualizationChoicesListOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for virtualization__choices_list: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -82,7 +90,7 @@ func (a *Client) VirtualizationChoicesRead(params *VirtualizationChoicesReadPara
 		PathPattern:        "/virtualization/_choices/{id}/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
+		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &VirtualizationChoicesReadReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -92,8 +100,14 @@ func (a *Client) VirtualizationChoicesRead(params *VirtualizationChoicesReadPara
 	if err != nil {
 		return nil, err
 	}
-	return result.(*VirtualizationChoicesReadOK), nil
-
+	success, ok := result.(*VirtualizationChoicesReadOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for virtualization__choices_read: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -111,7 +125,7 @@ func (a *Client) VirtualizationClusterGroupsCreate(params *VirtualizationCluster
 		PathPattern:        "/virtualization/cluster-groups/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
+		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &VirtualizationClusterGroupsCreateReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -121,8 +135,14 @@ func (a *Client) VirtualizationClusterGroupsCreate(params *VirtualizationCluster
 	if err != nil {
 		return nil, err
 	}
-	return result.(*VirtualizationClusterGroupsCreateCreated), nil
-
+	success, ok := result.(*VirtualizationClusterGroupsCreateCreated)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for virtualization_cluster-groups_create: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -140,7 +160,7 @@ func (a *Client) VirtualizationClusterGroupsDelete(params *VirtualizationCluster
 		PathPattern:        "/virtualization/cluster-groups/{id}/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
+		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &VirtualizationClusterGroupsDeleteReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -150,8 +170,14 @@ func (a *Client) VirtualizationClusterGroupsDelete(params *VirtualizationCluster
 	if err != nil {
 		return nil, err
 	}
-	return result.(*VirtualizationClusterGroupsDeleteNoContent), nil
-
+	success, ok := result.(*VirtualizationClusterGroupsDeleteNoContent)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for virtualization_cluster-groups_delete: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -169,7 +195,7 @@ func (a *Client) VirtualizationClusterGroupsList(params *VirtualizationClusterGr
 		PathPattern:        "/virtualization/cluster-groups/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
+		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &VirtualizationClusterGroupsListReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -179,8 +205,14 @@ func (a *Client) VirtualizationClusterGroupsList(params *VirtualizationClusterGr
 	if err != nil {
 		return nil, err
 	}
-	return result.(*VirtualizationClusterGroupsListOK), nil
-
+	success, ok := result.(*VirtualizationClusterGroupsListOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for virtualization_cluster-groups_list: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -198,7 +230,7 @@ func (a *Client) VirtualizationClusterGroupsPartialUpdate(params *Virtualization
 		PathPattern:        "/virtualization/cluster-groups/{id}/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
+		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &VirtualizationClusterGroupsPartialUpdateReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -208,8 +240,14 @@ func (a *Client) VirtualizationClusterGroupsPartialUpdate(params *Virtualization
 	if err != nil {
 		return nil, err
 	}
-	return result.(*VirtualizationClusterGroupsPartialUpdateOK), nil
-
+	success, ok := result.(*VirtualizationClusterGroupsPartialUpdateOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for virtualization_cluster-groups_partial_update: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -227,7 +265,7 @@ func (a *Client) VirtualizationClusterGroupsRead(params *VirtualizationClusterGr
 		PathPattern:        "/virtualization/cluster-groups/{id}/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
+		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &VirtualizationClusterGroupsReadReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -237,8 +275,14 @@ func (a *Client) VirtualizationClusterGroupsRead(params *VirtualizationClusterGr
 	if err != nil {
 		return nil, err
 	}
-	return result.(*VirtualizationClusterGroupsReadOK), nil
-
+	success, ok := result.(*VirtualizationClusterGroupsReadOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for virtualization_cluster-groups_read: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -256,7 +300,7 @@ func (a *Client) VirtualizationClusterGroupsUpdate(params *VirtualizationCluster
 		PathPattern:        "/virtualization/cluster-groups/{id}/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
+		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &VirtualizationClusterGroupsUpdateReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -266,8 +310,14 @@ func (a *Client) VirtualizationClusterGroupsUpdate(params *VirtualizationCluster
 	if err != nil {
 		return nil, err
 	}
-	return result.(*VirtualizationClusterGroupsUpdateOK), nil
-
+	success, ok := result.(*VirtualizationClusterGroupsUpdateOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for virtualization_cluster-groups_update: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -285,7 +335,7 @@ func (a *Client) VirtualizationClusterTypesCreate(params *VirtualizationClusterT
 		PathPattern:        "/virtualization/cluster-types/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
+		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &VirtualizationClusterTypesCreateReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -295,8 +345,14 @@ func (a *Client) VirtualizationClusterTypesCreate(params *VirtualizationClusterT
 	if err != nil {
 		return nil, err
 	}
-	return result.(*VirtualizationClusterTypesCreateCreated), nil
-
+	success, ok := result.(*VirtualizationClusterTypesCreateCreated)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for virtualization_cluster-types_create: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -314,7 +370,7 @@ func (a *Client) VirtualizationClusterTypesDelete(params *VirtualizationClusterT
 		PathPattern:        "/virtualization/cluster-types/{id}/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
+		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &VirtualizationClusterTypesDeleteReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -324,8 +380,14 @@ func (a *Client) VirtualizationClusterTypesDelete(params *VirtualizationClusterT
 	if err != nil {
 		return nil, err
 	}
-	return result.(*VirtualizationClusterTypesDeleteNoContent), nil
-
+	success, ok := result.(*VirtualizationClusterTypesDeleteNoContent)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for virtualization_cluster-types_delete: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -343,7 +405,7 @@ func (a *Client) VirtualizationClusterTypesList(params *VirtualizationClusterTyp
 		PathPattern:        "/virtualization/cluster-types/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
+		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &VirtualizationClusterTypesListReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -353,8 +415,14 @@ func (a *Client) VirtualizationClusterTypesList(params *VirtualizationClusterTyp
 	if err != nil {
 		return nil, err
 	}
-	return result.(*VirtualizationClusterTypesListOK), nil
-
+	success, ok := result.(*VirtualizationClusterTypesListOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for virtualization_cluster-types_list: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -372,7 +440,7 @@ func (a *Client) VirtualizationClusterTypesPartialUpdate(params *VirtualizationC
 		PathPattern:        "/virtualization/cluster-types/{id}/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
+		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &VirtualizationClusterTypesPartialUpdateReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -382,8 +450,14 @@ func (a *Client) VirtualizationClusterTypesPartialUpdate(params *VirtualizationC
 	if err != nil {
 		return nil, err
 	}
-	return result.(*VirtualizationClusterTypesPartialUpdateOK), nil
-
+	success, ok := result.(*VirtualizationClusterTypesPartialUpdateOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for virtualization_cluster-types_partial_update: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -401,7 +475,7 @@ func (a *Client) VirtualizationClusterTypesRead(params *VirtualizationClusterTyp
 		PathPattern:        "/virtualization/cluster-types/{id}/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
+		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &VirtualizationClusterTypesReadReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -411,8 +485,14 @@ func (a *Client) VirtualizationClusterTypesRead(params *VirtualizationClusterTyp
 	if err != nil {
 		return nil, err
 	}
-	return result.(*VirtualizationClusterTypesReadOK), nil
-
+	success, ok := result.(*VirtualizationClusterTypesReadOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for virtualization_cluster-types_read: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -430,7 +510,7 @@ func (a *Client) VirtualizationClusterTypesUpdate(params *VirtualizationClusterT
 		PathPattern:        "/virtualization/cluster-types/{id}/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
+		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &VirtualizationClusterTypesUpdateReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -440,8 +520,14 @@ func (a *Client) VirtualizationClusterTypesUpdate(params *VirtualizationClusterT
 	if err != nil {
 		return nil, err
 	}
-	return result.(*VirtualizationClusterTypesUpdateOK), nil
-
+	success, ok := result.(*VirtualizationClusterTypesUpdateOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for virtualization_cluster-types_update: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -459,7 +545,7 @@ func (a *Client) VirtualizationClustersCreate(params *VirtualizationClustersCrea
 		PathPattern:        "/virtualization/clusters/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
+		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &VirtualizationClustersCreateReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -469,8 +555,14 @@ func (a *Client) VirtualizationClustersCreate(params *VirtualizationClustersCrea
 	if err != nil {
 		return nil, err
 	}
-	return result.(*VirtualizationClustersCreateCreated), nil
-
+	success, ok := result.(*VirtualizationClustersCreateCreated)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for virtualization_clusters_create: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -488,7 +580,7 @@ func (a *Client) VirtualizationClustersDelete(params *VirtualizationClustersDele
 		PathPattern:        "/virtualization/clusters/{id}/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
+		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &VirtualizationClustersDeleteReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -498,8 +590,14 @@ func (a *Client) VirtualizationClustersDelete(params *VirtualizationClustersDele
 	if err != nil {
 		return nil, err
 	}
-	return result.(*VirtualizationClustersDeleteNoContent), nil
-
+	success, ok := result.(*VirtualizationClustersDeleteNoContent)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for virtualization_clusters_delete: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -517,7 +615,7 @@ func (a *Client) VirtualizationClustersList(params *VirtualizationClustersListPa
 		PathPattern:        "/virtualization/clusters/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
+		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &VirtualizationClustersListReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -527,8 +625,14 @@ func (a *Client) VirtualizationClustersList(params *VirtualizationClustersListPa
 	if err != nil {
 		return nil, err
 	}
-	return result.(*VirtualizationClustersListOK), nil
-
+	success, ok := result.(*VirtualizationClustersListOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for virtualization_clusters_list: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -546,7 +650,7 @@ func (a *Client) VirtualizationClustersPartialUpdate(params *VirtualizationClust
 		PathPattern:        "/virtualization/clusters/{id}/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
+		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &VirtualizationClustersPartialUpdateReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -556,8 +660,14 @@ func (a *Client) VirtualizationClustersPartialUpdate(params *VirtualizationClust
 	if err != nil {
 		return nil, err
 	}
-	return result.(*VirtualizationClustersPartialUpdateOK), nil
-
+	success, ok := result.(*VirtualizationClustersPartialUpdateOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for virtualization_clusters_partial_update: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -575,7 +685,7 @@ func (a *Client) VirtualizationClustersRead(params *VirtualizationClustersReadPa
 		PathPattern:        "/virtualization/clusters/{id}/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
+		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &VirtualizationClustersReadReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -585,8 +695,14 @@ func (a *Client) VirtualizationClustersRead(params *VirtualizationClustersReadPa
 	if err != nil {
 		return nil, err
 	}
-	return result.(*VirtualizationClustersReadOK), nil
-
+	success, ok := result.(*VirtualizationClustersReadOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for virtualization_clusters_read: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -604,7 +720,7 @@ func (a *Client) VirtualizationClustersUpdate(params *VirtualizationClustersUpda
 		PathPattern:        "/virtualization/clusters/{id}/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
+		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &VirtualizationClustersUpdateReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -614,8 +730,14 @@ func (a *Client) VirtualizationClustersUpdate(params *VirtualizationClustersUpda
 	if err != nil {
 		return nil, err
 	}
-	return result.(*VirtualizationClustersUpdateOK), nil
-
+	success, ok := result.(*VirtualizationClustersUpdateOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for virtualization_clusters_update: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -633,7 +755,7 @@ func (a *Client) VirtualizationInterfacesCreate(params *VirtualizationInterfaces
 		PathPattern:        "/virtualization/interfaces/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
+		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &VirtualizationInterfacesCreateReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -643,8 +765,14 @@ func (a *Client) VirtualizationInterfacesCreate(params *VirtualizationInterfaces
 	if err != nil {
 		return nil, err
 	}
-	return result.(*VirtualizationInterfacesCreateCreated), nil
-
+	success, ok := result.(*VirtualizationInterfacesCreateCreated)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for virtualization_interfaces_create: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -662,7 +790,7 @@ func (a *Client) VirtualizationInterfacesDelete(params *VirtualizationInterfaces
 		PathPattern:        "/virtualization/interfaces/{id}/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
+		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &VirtualizationInterfacesDeleteReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -672,8 +800,14 @@ func (a *Client) VirtualizationInterfacesDelete(params *VirtualizationInterfaces
 	if err != nil {
 		return nil, err
 	}
-	return result.(*VirtualizationInterfacesDeleteNoContent), nil
-
+	success, ok := result.(*VirtualizationInterfacesDeleteNoContent)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for virtualization_interfaces_delete: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -691,7 +825,7 @@ func (a *Client) VirtualizationInterfacesList(params *VirtualizationInterfacesLi
 		PathPattern:        "/virtualization/interfaces/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
+		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &VirtualizationInterfacesListReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -701,8 +835,14 @@ func (a *Client) VirtualizationInterfacesList(params *VirtualizationInterfacesLi
 	if err != nil {
 		return nil, err
 	}
-	return result.(*VirtualizationInterfacesListOK), nil
-
+	success, ok := result.(*VirtualizationInterfacesListOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for virtualization_interfaces_list: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -720,7 +860,7 @@ func (a *Client) VirtualizationInterfacesPartialUpdate(params *VirtualizationInt
 		PathPattern:        "/virtualization/interfaces/{id}/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
+		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &VirtualizationInterfacesPartialUpdateReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -730,8 +870,14 @@ func (a *Client) VirtualizationInterfacesPartialUpdate(params *VirtualizationInt
 	if err != nil {
 		return nil, err
 	}
-	return result.(*VirtualizationInterfacesPartialUpdateOK), nil
-
+	success, ok := result.(*VirtualizationInterfacesPartialUpdateOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for virtualization_interfaces_partial_update: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -749,7 +895,7 @@ func (a *Client) VirtualizationInterfacesRead(params *VirtualizationInterfacesRe
 		PathPattern:        "/virtualization/interfaces/{id}/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
+		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &VirtualizationInterfacesReadReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -759,8 +905,14 @@ func (a *Client) VirtualizationInterfacesRead(params *VirtualizationInterfacesRe
 	if err != nil {
 		return nil, err
 	}
-	return result.(*VirtualizationInterfacesReadOK), nil
-
+	success, ok := result.(*VirtualizationInterfacesReadOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for virtualization_interfaces_read: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -778,7 +930,7 @@ func (a *Client) VirtualizationInterfacesUpdate(params *VirtualizationInterfaces
 		PathPattern:        "/virtualization/interfaces/{id}/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
+		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &VirtualizationInterfacesUpdateReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -788,8 +940,14 @@ func (a *Client) VirtualizationInterfacesUpdate(params *VirtualizationInterfaces
 	if err != nil {
 		return nil, err
 	}
-	return result.(*VirtualizationInterfacesUpdateOK), nil
-
+	success, ok := result.(*VirtualizationInterfacesUpdateOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for virtualization_interfaces_update: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -807,7 +965,7 @@ func (a *Client) VirtualizationVirtualMachinesCreate(params *VirtualizationVirtu
 		PathPattern:        "/virtualization/virtual-machines/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
+		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &VirtualizationVirtualMachinesCreateReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -817,8 +975,14 @@ func (a *Client) VirtualizationVirtualMachinesCreate(params *VirtualizationVirtu
 	if err != nil {
 		return nil, err
 	}
-	return result.(*VirtualizationVirtualMachinesCreateCreated), nil
-
+	success, ok := result.(*VirtualizationVirtualMachinesCreateCreated)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for virtualization_virtual-machines_create: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -836,7 +1000,7 @@ func (a *Client) VirtualizationVirtualMachinesDelete(params *VirtualizationVirtu
 		PathPattern:        "/virtualization/virtual-machines/{id}/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
+		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &VirtualizationVirtualMachinesDeleteReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -846,8 +1010,14 @@ func (a *Client) VirtualizationVirtualMachinesDelete(params *VirtualizationVirtu
 	if err != nil {
 		return nil, err
 	}
-	return result.(*VirtualizationVirtualMachinesDeleteNoContent), nil
-
+	success, ok := result.(*VirtualizationVirtualMachinesDeleteNoContent)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for virtualization_virtual-machines_delete: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -865,7 +1035,7 @@ func (a *Client) VirtualizationVirtualMachinesList(params *VirtualizationVirtual
 		PathPattern:        "/virtualization/virtual-machines/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
+		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &VirtualizationVirtualMachinesListReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -875,8 +1045,14 @@ func (a *Client) VirtualizationVirtualMachinesList(params *VirtualizationVirtual
 	if err != nil {
 		return nil, err
 	}
-	return result.(*VirtualizationVirtualMachinesListOK), nil
-
+	success, ok := result.(*VirtualizationVirtualMachinesListOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for virtualization_virtual-machines_list: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -894,7 +1070,7 @@ func (a *Client) VirtualizationVirtualMachinesPartialUpdate(params *Virtualizati
 		PathPattern:        "/virtualization/virtual-machines/{id}/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
+		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &VirtualizationVirtualMachinesPartialUpdateReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -904,8 +1080,14 @@ func (a *Client) VirtualizationVirtualMachinesPartialUpdate(params *Virtualizati
 	if err != nil {
 		return nil, err
 	}
-	return result.(*VirtualizationVirtualMachinesPartialUpdateOK), nil
-
+	success, ok := result.(*VirtualizationVirtualMachinesPartialUpdateOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for virtualization_virtual-machines_partial_update: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -923,7 +1105,7 @@ func (a *Client) VirtualizationVirtualMachinesRead(params *VirtualizationVirtual
 		PathPattern:        "/virtualization/virtual-machines/{id}/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
+		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &VirtualizationVirtualMachinesReadReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -933,8 +1115,14 @@ func (a *Client) VirtualizationVirtualMachinesRead(params *VirtualizationVirtual
 	if err != nil {
 		return nil, err
 	}
-	return result.(*VirtualizationVirtualMachinesReadOK), nil
-
+	success, ok := result.(*VirtualizationVirtualMachinesReadOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for virtualization_virtual-machines_read: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -952,7 +1140,7 @@ func (a *Client) VirtualizationVirtualMachinesUpdate(params *VirtualizationVirtu
 		PathPattern:        "/virtualization/virtual-machines/{id}/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
+		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &VirtualizationVirtualMachinesUpdateReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -962,8 +1150,14 @@ func (a *Client) VirtualizationVirtualMachinesUpdate(params *VirtualizationVirtu
 	if err != nil {
 		return nil, err
 	}
-	return result.(*VirtualizationVirtualMachinesUpdateOK), nil
-
+	success, ok := result.(*VirtualizationVirtualMachinesUpdateOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for virtualization_virtual-machines_update: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 // SetTransport changes the transport on the client
