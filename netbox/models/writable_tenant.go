@@ -13,6 +13,7 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
+//
 
 package models
 
@@ -36,6 +37,10 @@ type WritableTenant struct {
 	// Circuit count
 	// Read Only: true
 	CircuitCount int64 `json:"circuit_count,omitempty"`
+
+	// Cluster count
+	// Read Only: true
+	ClusterCount int64 `json:"cluster_count,omitempty"`
 
 	// Comments
 	Comments string `json:"comments,omitempty"`

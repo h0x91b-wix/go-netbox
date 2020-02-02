@@ -13,6 +13,7 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
+//
 
 package models
 
@@ -102,8 +103,8 @@ type WritableVirtualMachineWithConfigContext struct {
 	Site string `json:"site,omitempty"`
 
 	// Status
-	// Enum: [1 0 3]
-	Status int64 `json:"status,omitempty"`
+	// Enum: [active offline staged]
+	Status string `json:"status,omitempty"`
 
 	// tags
 	Tags []string `json:"tags"`
@@ -252,8 +253,8 @@ func (m *WritableVirtualMachineWithConfigContext) validateName(formats strfmt.Re
 var writableVirtualMachineWithConfigContextTypeStatusPropEnum []interface{}
 
 func init() {
-	var res []int64
-	if err := json.Unmarshal([]byte(`[1,0,3]`), &res); err != nil {
+	var res []string
+	if err := json.Unmarshal([]byte(`["active","offline","staged"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {
@@ -261,8 +262,20 @@ func init() {
 	}
 }
 
+const (
+
+	// WritableVirtualMachineWithConfigContextStatusActive captures enum value "active"
+	WritableVirtualMachineWithConfigContextStatusActive string = "active"
+
+	// WritableVirtualMachineWithConfigContextStatusOffline captures enum value "offline"
+	WritableVirtualMachineWithConfigContextStatusOffline string = "offline"
+
+	// WritableVirtualMachineWithConfigContextStatusStaged captures enum value "staged"
+	WritableVirtualMachineWithConfigContextStatusStaged string = "staged"
+)
+
 // prop value enum
-func (m *WritableVirtualMachineWithConfigContext) validateStatusEnum(path, location string, value int64) error {
+func (m *WritableVirtualMachineWithConfigContext) validateStatusEnum(path, location string, value string) error {
 	if err := validate.Enum(path, location, value, writableVirtualMachineWithConfigContextTypeStatusPropEnum); err != nil {
 		return err
 	}

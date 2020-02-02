@@ -13,6 +13,7 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
+//
 
 package extras
 
@@ -108,6 +109,8 @@ type ExtrasConfigContextsListParams struct {
 	Site *string
 	/*SiteID*/
 	SiteID *string
+	/*Tag*/
+	Tag *string
 	/*Tenant*/
 	Tenant *string
 	/*TenantGroup*/
@@ -296,6 +299,17 @@ func (o *ExtrasConfigContextsListParams) WithSiteID(siteID *string) *ExtrasConfi
 // SetSiteID adds the siteId to the extras config contexts list params
 func (o *ExtrasConfigContextsListParams) SetSiteID(siteID *string) {
 	o.SiteID = siteID
+}
+
+// WithTag adds the tag to the extras config contexts list params
+func (o *ExtrasConfigContextsListParams) WithTag(tag *string) *ExtrasConfigContextsListParams {
+	o.SetTag(tag)
+	return o
+}
+
+// SetTag adds the tag to the extras config contexts list params
+func (o *ExtrasConfigContextsListParams) SetTag(tag *string) {
+	o.Tag = tag
 }
 
 // WithTenant adds the tenant to the extras config contexts list params
@@ -552,6 +566,22 @@ func (o *ExtrasConfigContextsListParams) WriteToRequest(r runtime.ClientRequest,
 		qSiteID := qrSiteID
 		if qSiteID != "" {
 			if err := r.SetQueryParam("site_id", qSiteID); err != nil {
+				return err
+			}
+		}
+
+	}
+
+	if o.Tag != nil {
+
+		// query param tag
+		var qrTag string
+		if o.Tag != nil {
+			qrTag = *o.Tag
+		}
+		qTag := qrTag
+		if qTag != "" {
+			if err := r.SetQueryParam("tag", qTag); err != nil {
 				return err
 			}
 		}

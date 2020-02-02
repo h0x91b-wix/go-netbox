@@ -13,6 +13,7 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
+//
 
 package models
 
@@ -71,6 +72,9 @@ type WritableCluster struct {
 
 	// tags
 	Tags []string `json:"tags"`
+
+	// Tenant
+	Tenant *int64 `json:"tenant,omitempty"`
 
 	// Type
 	// Required: true

@@ -13,6 +13,7 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
+//
 
 package models
 
@@ -20,6 +21,8 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"strconv"
+
 	strfmt "github.com/go-openapi/strfmt"
 
 	"github.com/go-openapi/errors"
@@ -68,6 +71,10 @@ type WritableConfigContext struct {
 	// Unique: true
 	Sites []int64 `json:"sites"`
 
+	// tags
+	// Unique: true
+	Tags []string `json:"tags"`
+
 	// tenant groups
 	// Unique: true
 	TenantGroups []int64 `json:"tenant_groups"`
@@ -111,6 +118,10 @@ func (m *WritableConfigContext) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateSites(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateTags(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -218,6 +229,27 @@ func (m *WritableConfigContext) validateSites(formats strfmt.Registry) error {
 
 	if err := validate.UniqueItems("sites", "body", m.Sites); err != nil {
 		return err
+	}
+
+	return nil
+}
+
+func (m *WritableConfigContext) validateTags(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.Tags) { // not required
+		return nil
+	}
+
+	if err := validate.UniqueItems("tags", "body", m.Tags); err != nil {
+		return err
+	}
+
+	for i := 0; i < len(m.Tags); i++ {
+
+		if err := validate.Pattern("tags"+"."+strconv.Itoa(i), "body", string(m.Tags[i]), `^[-a-zA-Z0-9_]+$`); err != nil {
+			return err
+		}
+
 	}
 
 	return nil

@@ -13,6 +13,7 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
+//
 
 package models
 
@@ -78,8 +79,8 @@ type WritableCircuit struct {
 	Provider *int64 `json:"provider"`
 
 	// Status
-	// Enum: [2 3 1 4 0 5]
-	Status int64 `json:"status,omitempty"`
+	// Enum: [planned provisioning active offline deprovisioning decommissioned]
+	Status string `json:"status,omitempty"`
 
 	// tags
 	Tags []string `json:"tags"`
@@ -240,8 +241,8 @@ func (m *WritableCircuit) validateProvider(formats strfmt.Registry) error {
 var writableCircuitTypeStatusPropEnum []interface{}
 
 func init() {
-	var res []int64
-	if err := json.Unmarshal([]byte(`[2,3,1,4,0,5]`), &res); err != nil {
+	var res []string
+	if err := json.Unmarshal([]byte(`["planned","provisioning","active","offline","deprovisioning","decommissioned"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {
@@ -249,8 +250,29 @@ func init() {
 	}
 }
 
+const (
+
+	// WritableCircuitStatusPlanned captures enum value "planned"
+	WritableCircuitStatusPlanned string = "planned"
+
+	// WritableCircuitStatusProvisioning captures enum value "provisioning"
+	WritableCircuitStatusProvisioning string = "provisioning"
+
+	// WritableCircuitStatusActive captures enum value "active"
+	WritableCircuitStatusActive string = "active"
+
+	// WritableCircuitStatusOffline captures enum value "offline"
+	WritableCircuitStatusOffline string = "offline"
+
+	// WritableCircuitStatusDeprovisioning captures enum value "deprovisioning"
+	WritableCircuitStatusDeprovisioning string = "deprovisioning"
+
+	// WritableCircuitStatusDecommissioned captures enum value "decommissioned"
+	WritableCircuitStatusDecommissioned string = "decommissioned"
+)
+
 // prop value enum
-func (m *WritableCircuit) validateStatusEnum(path, location string, value int64) error {
+func (m *WritableCircuit) validateStatusEnum(path, location string, value string) error {
 	if err := validate.Enum(path, location, value, writableCircuitTypeStatusPropEnum); err != nil {
 		return err
 	}

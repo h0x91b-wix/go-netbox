@@ -13,6 +13,7 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
+//
 
 package models
 
@@ -42,6 +43,8 @@ type ExportTemplate struct {
 	Description string `json:"description,omitempty"`
 
 	// File extension
+	//
+	// Extension to append to the rendered filename
 	// Max Length: 15
 	FileExtension string `json:"file_extension,omitempty"`
 
@@ -49,7 +52,9 @@ type ExportTemplate struct {
 	// Read Only: true
 	ID int64 `json:"id,omitempty"`
 
-	// Mime type
+	// MIME type
+	//
+	// Defaults to <code>text/plain</code>
 	// Max Length: 50
 	MimeType string `json:"mime_type,omitempty"`
 
@@ -60,6 +65,8 @@ type ExportTemplate struct {
 	Name *string `json:"name"`
 
 	// Template code
+	//
+	// The list of objects being exported is passed as a context variable named <code>queryset</code>.
 	// Required: true
 	// Min Length: 1
 	TemplateCode *string `json:"template_code"`
@@ -230,13 +237,13 @@ type ExportTemplateTemplateLanguage struct {
 
 	// value
 	// Required: true
-	Value *int64 `json:"value"`
+	Value *string `json:"value"`
 }
 
 func (m *ExportTemplateTemplateLanguage) UnmarshalJSON(b []byte) error {
 	type ExportTemplateTemplateLanguageAlias ExportTemplateTemplateLanguage
 	var t ExportTemplateTemplateLanguageAlias
-	if err := json.Unmarshal([]byte("{\"label\":\"Jinja2\",\"value\":20}"), &t); err != nil {
+	if err := json.Unmarshal([]byte("{\"id\":20,\"label\":\"Jinja2\",\"value\":\"jinja2\"}"), &t); err != nil {
 		return err
 	}
 	if err := json.Unmarshal(b, &t); err != nil {

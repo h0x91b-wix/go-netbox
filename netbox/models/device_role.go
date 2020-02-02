@@ -13,6 +13,7 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
+//
 
 package models
 
@@ -37,6 +38,10 @@ type DeviceRole struct {
 	// Min Length: 1
 	// Pattern: ^[0-9a-f]{6}$
 	Color *string `json:"color"`
+
+	// Description
+	// Max Length: 100
+	Description string `json:"description,omitempty"`
 
 	// Device count
 	// Read Only: true
@@ -77,6 +82,10 @@ func (m *DeviceRole) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateDescription(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateName(formats); err != nil {
 		res = append(res, err)
 	}
@@ -106,6 +115,19 @@ func (m *DeviceRole) validateColor(formats strfmt.Registry) error {
 	}
 
 	if err := validate.Pattern("color", "body", string(*m.Color), `^[0-9a-f]{6}$`); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *DeviceRole) validateDescription(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.Description) { // not required
+		return nil
+	}
+
+	if err := validate.MaxLength("description", "body", string(m.Description), 100); err != nil {
 		return err
 	}
 

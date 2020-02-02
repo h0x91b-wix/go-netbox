@@ -13,6 +13,7 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
+//
 
 package tenancy
 
@@ -20,6 +21,8 @@ package tenancy
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"fmt"
+
 	"github.com/go-openapi/runtime"
 
 	strfmt "github.com/go-openapi/strfmt"
@@ -53,7 +56,7 @@ func (a *Client) TenancyChoicesList(params *TenancyChoicesListParams, authInfo r
 		PathPattern:        "/tenancy/_choices/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
+		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &TenancyChoicesListReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -63,8 +66,14 @@ func (a *Client) TenancyChoicesList(params *TenancyChoicesListParams, authInfo r
 	if err != nil {
 		return nil, err
 	}
-	return result.(*TenancyChoicesListOK), nil
-
+	success, ok := result.(*TenancyChoicesListOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for tenancy__choices_list: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -82,7 +91,7 @@ func (a *Client) TenancyChoicesRead(params *TenancyChoicesReadParams, authInfo r
 		PathPattern:        "/tenancy/_choices/{id}/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
+		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &TenancyChoicesReadReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -92,8 +101,14 @@ func (a *Client) TenancyChoicesRead(params *TenancyChoicesReadParams, authInfo r
 	if err != nil {
 		return nil, err
 	}
-	return result.(*TenancyChoicesReadOK), nil
-
+	success, ok := result.(*TenancyChoicesReadOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for tenancy__choices_read: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -111,7 +126,7 @@ func (a *Client) TenancyTenantGroupsCreate(params *TenancyTenantGroupsCreatePara
 		PathPattern:        "/tenancy/tenant-groups/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
+		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &TenancyTenantGroupsCreateReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -121,8 +136,14 @@ func (a *Client) TenancyTenantGroupsCreate(params *TenancyTenantGroupsCreatePara
 	if err != nil {
 		return nil, err
 	}
-	return result.(*TenancyTenantGroupsCreateCreated), nil
-
+	success, ok := result.(*TenancyTenantGroupsCreateCreated)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for tenancy_tenant-groups_create: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -140,7 +161,7 @@ func (a *Client) TenancyTenantGroupsDelete(params *TenancyTenantGroupsDeletePara
 		PathPattern:        "/tenancy/tenant-groups/{id}/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
+		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &TenancyTenantGroupsDeleteReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -150,8 +171,14 @@ func (a *Client) TenancyTenantGroupsDelete(params *TenancyTenantGroupsDeletePara
 	if err != nil {
 		return nil, err
 	}
-	return result.(*TenancyTenantGroupsDeleteNoContent), nil
-
+	success, ok := result.(*TenancyTenantGroupsDeleteNoContent)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for tenancy_tenant-groups_delete: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -169,7 +196,7 @@ func (a *Client) TenancyTenantGroupsList(params *TenancyTenantGroupsListParams, 
 		PathPattern:        "/tenancy/tenant-groups/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
+		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &TenancyTenantGroupsListReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -179,8 +206,14 @@ func (a *Client) TenancyTenantGroupsList(params *TenancyTenantGroupsListParams, 
 	if err != nil {
 		return nil, err
 	}
-	return result.(*TenancyTenantGroupsListOK), nil
-
+	success, ok := result.(*TenancyTenantGroupsListOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for tenancy_tenant-groups_list: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -198,7 +231,7 @@ func (a *Client) TenancyTenantGroupsPartialUpdate(params *TenancyTenantGroupsPar
 		PathPattern:        "/tenancy/tenant-groups/{id}/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
+		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &TenancyTenantGroupsPartialUpdateReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -208,8 +241,14 @@ func (a *Client) TenancyTenantGroupsPartialUpdate(params *TenancyTenantGroupsPar
 	if err != nil {
 		return nil, err
 	}
-	return result.(*TenancyTenantGroupsPartialUpdateOK), nil
-
+	success, ok := result.(*TenancyTenantGroupsPartialUpdateOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for tenancy_tenant-groups_partial_update: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -227,7 +266,7 @@ func (a *Client) TenancyTenantGroupsRead(params *TenancyTenantGroupsReadParams, 
 		PathPattern:        "/tenancy/tenant-groups/{id}/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
+		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &TenancyTenantGroupsReadReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -237,8 +276,14 @@ func (a *Client) TenancyTenantGroupsRead(params *TenancyTenantGroupsReadParams, 
 	if err != nil {
 		return nil, err
 	}
-	return result.(*TenancyTenantGroupsReadOK), nil
-
+	success, ok := result.(*TenancyTenantGroupsReadOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for tenancy_tenant-groups_read: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -256,7 +301,7 @@ func (a *Client) TenancyTenantGroupsUpdate(params *TenancyTenantGroupsUpdatePara
 		PathPattern:        "/tenancy/tenant-groups/{id}/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
+		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &TenancyTenantGroupsUpdateReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -266,8 +311,14 @@ func (a *Client) TenancyTenantGroupsUpdate(params *TenancyTenantGroupsUpdatePara
 	if err != nil {
 		return nil, err
 	}
-	return result.(*TenancyTenantGroupsUpdateOK), nil
-
+	success, ok := result.(*TenancyTenantGroupsUpdateOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for tenancy_tenant-groups_update: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -285,7 +336,7 @@ func (a *Client) TenancyTenantsCreate(params *TenancyTenantsCreateParams, authIn
 		PathPattern:        "/tenancy/tenants/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
+		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &TenancyTenantsCreateReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -295,8 +346,14 @@ func (a *Client) TenancyTenantsCreate(params *TenancyTenantsCreateParams, authIn
 	if err != nil {
 		return nil, err
 	}
-	return result.(*TenancyTenantsCreateCreated), nil
-
+	success, ok := result.(*TenancyTenantsCreateCreated)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for tenancy_tenants_create: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -314,7 +371,7 @@ func (a *Client) TenancyTenantsDelete(params *TenancyTenantsDeleteParams, authIn
 		PathPattern:        "/tenancy/tenants/{id}/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
+		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &TenancyTenantsDeleteReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -324,8 +381,14 @@ func (a *Client) TenancyTenantsDelete(params *TenancyTenantsDeleteParams, authIn
 	if err != nil {
 		return nil, err
 	}
-	return result.(*TenancyTenantsDeleteNoContent), nil
-
+	success, ok := result.(*TenancyTenantsDeleteNoContent)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for tenancy_tenants_delete: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -343,7 +406,7 @@ func (a *Client) TenancyTenantsList(params *TenancyTenantsListParams, authInfo r
 		PathPattern:        "/tenancy/tenants/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
+		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &TenancyTenantsListReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -353,8 +416,14 @@ func (a *Client) TenancyTenantsList(params *TenancyTenantsListParams, authInfo r
 	if err != nil {
 		return nil, err
 	}
-	return result.(*TenancyTenantsListOK), nil
-
+	success, ok := result.(*TenancyTenantsListOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for tenancy_tenants_list: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -372,7 +441,7 @@ func (a *Client) TenancyTenantsPartialUpdate(params *TenancyTenantsPartialUpdate
 		PathPattern:        "/tenancy/tenants/{id}/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
+		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &TenancyTenantsPartialUpdateReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -382,8 +451,14 @@ func (a *Client) TenancyTenantsPartialUpdate(params *TenancyTenantsPartialUpdate
 	if err != nil {
 		return nil, err
 	}
-	return result.(*TenancyTenantsPartialUpdateOK), nil
-
+	success, ok := result.(*TenancyTenantsPartialUpdateOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for tenancy_tenants_partial_update: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -401,7 +476,7 @@ func (a *Client) TenancyTenantsRead(params *TenancyTenantsReadParams, authInfo r
 		PathPattern:        "/tenancy/tenants/{id}/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
+		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &TenancyTenantsReadReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -411,8 +486,14 @@ func (a *Client) TenancyTenantsRead(params *TenancyTenantsReadParams, authInfo r
 	if err != nil {
 		return nil, err
 	}
-	return result.(*TenancyTenantsReadOK), nil
-
+	success, ok := result.(*TenancyTenantsReadOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for tenancy_tenants_read: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -430,7 +511,7 @@ func (a *Client) TenancyTenantsUpdate(params *TenancyTenantsUpdateParams, authIn
 		PathPattern:        "/tenancy/tenants/{id}/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
+		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &TenancyTenantsUpdateReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -440,8 +521,14 @@ func (a *Client) TenancyTenantsUpdate(params *TenancyTenantsUpdateParams, authIn
 	if err != nil {
 		return nil, err
 	}
-	return result.(*TenancyTenantsUpdateOK), nil
-
+	success, ok := result.(*TenancyTenantsUpdateOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for tenancy_tenants_update: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 // SetTransport changes the transport on the client

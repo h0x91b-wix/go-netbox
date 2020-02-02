@@ -13,6 +13,7 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
+//
 
 package models
 
@@ -46,7 +47,7 @@ type CircuitTermination struct {
 	//         Return the appropriate serializer for the type of connected object.
 	//
 	// Read Only: true
-	ConnectedEndpoint *ConnectedEndpoint `json:"connected_endpoint,omitempty"`
+	ConnectedEndpoint map[string]string `json:"connected_endpoint,omitempty"`
 
 	// Connected endpoint type
 	// Read Only: true

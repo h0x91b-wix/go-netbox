@@ -13,6 +13,7 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
+//
 
 package models
 
@@ -37,6 +38,10 @@ type RackRole struct {
 	// Min Length: 1
 	// Pattern: ^[0-9a-f]{6}$
 	Color *string `json:"color"`
+
+	// Description
+	// Max Length: 100
+	Description string `json:"description,omitempty"`
 
 	// ID
 	// Read Only: true
@@ -65,6 +70,10 @@ func (m *RackRole) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validateColor(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateDescription(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -97,6 +106,19 @@ func (m *RackRole) validateColor(formats strfmt.Registry) error {
 	}
 
 	if err := validate.Pattern("color", "body", string(*m.Color), `^[0-9a-f]{6}$`); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *RackRole) validateDescription(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.Description) { // not required
+		return nil
+	}
+
+	if err := validate.MaxLength("description", "body", string(m.Description), 100); err != nil {
 		return err
 	}
 

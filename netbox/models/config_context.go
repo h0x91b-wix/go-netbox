@@ -13,6 +13,7 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
+//
 
 package models
 
@@ -70,6 +71,10 @@ type ConfigContext struct {
 	// Unique: true
 	Sites []*NestedSite `json:"sites"`
 
+	// tags
+	// Unique: true
+	Tags []string `json:"tags"`
+
 	// tenant groups
 	// Unique: true
 	TenantGroups []*NestedTenantGroup `json:"tenant_groups"`
@@ -113,6 +118,10 @@ func (m *ConfigContext) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateSites(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateTags(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -282,6 +291,27 @@ func (m *ConfigContext) validateSites(formats strfmt.Registry) error {
 				}
 				return err
 			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *ConfigContext) validateTags(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.Tags) { // not required
+		return nil
+	}
+
+	if err := validate.UniqueItems("tags", "body", m.Tags); err != nil {
+		return err
+	}
+
+	for i := 0; i < len(m.Tags); i++ {
+
+		if err := validate.Pattern("tags"+"."+strconv.Itoa(i), "body", string(m.Tags[i]), `^[-a-zA-Z0-9_]+$`); err != nil {
+			return err
 		}
 
 	}

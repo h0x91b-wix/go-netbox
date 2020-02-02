@@ -13,6 +13,7 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
+//
 
 package models
 
@@ -92,9 +93,9 @@ type WritableDeviceType struct {
 
 	// Parent/child status
 	//
-	// Parent devices house child devices in device bays. Select "None" if this device type is neither a parent nor a child.
-	// Enum: [<nil> true false]
-	SubdeviceRole bool `json:"subdevice_role,omitempty"`
+	// Parent devices house child devices in device bays. Leave blank if this device type is neither a parent nor a child.
+	// Enum: [parent child]
+	SubdeviceRole string `json:"subdevice_role,omitempty"`
 
 	// tags
 	Tags []string `json:"tags"`
@@ -240,8 +241,8 @@ func (m *WritableDeviceType) validateSlug(formats strfmt.Registry) error {
 var writableDeviceTypeTypeSubdeviceRolePropEnum []interface{}
 
 func init() {
-	var res []bool
-	if err := json.Unmarshal([]byte(`[null,true,false]`), &res); err != nil {
+	var res []string
+	if err := json.Unmarshal([]byte(`["parent","child"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {
@@ -249,8 +250,17 @@ func init() {
 	}
 }
 
+const (
+
+	// WritableDeviceTypeSubdeviceRoleParent captures enum value "parent"
+	WritableDeviceTypeSubdeviceRoleParent string = "parent"
+
+	// WritableDeviceTypeSubdeviceRoleChild captures enum value "child"
+	WritableDeviceTypeSubdeviceRoleChild string = "child"
+)
+
 // prop value enum
-func (m *WritableDeviceType) validateSubdeviceRoleEnum(path, location string, value bool) error {
+func (m *WritableDeviceType) validateSubdeviceRoleEnum(path, location string, value string) error {
 	if err := validate.Enum(path, location, value, writableDeviceTypeTypeSubdeviceRolePropEnum); err != nil {
 		return err
 	}

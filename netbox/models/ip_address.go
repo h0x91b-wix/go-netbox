@@ -13,6 +13,7 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
+//
 
 package models
 
@@ -55,7 +56,7 @@ type IPAddress struct {
 	//
 	// Hostname or FQDN (not case-sensitive)
 	// Max Length: 255
-	// Pattern: ^[0-9A-Za-z.-]+$
+	// Pattern: ^[0-9A-Za-z._-]+$
 	DNSName string `json:"dns_name,omitempty"`
 
 	// family
@@ -206,7 +207,7 @@ func (m *IPAddress) validateDNSName(formats strfmt.Registry) error {
 		return err
 	}
 
-	if err := validate.Pattern("dns_name", "body", string(m.DNSName), `^[0-9A-Za-z.-]+$`); err != nil {
+	if err := validate.Pattern("dns_name", "body", string(m.DNSName), `^[0-9A-Za-z._-]+$`); err != nil {
 		return err
 	}
 
@@ -415,7 +416,7 @@ type IPAddressFamily struct {
 
 	// value
 	// Required: true
-	Value *int64 `json:"value"`
+	Value *string `json:"value"`
 }
 
 // Validate validates this IP address family
@@ -482,7 +483,7 @@ type IPAddressRole struct {
 
 	// value
 	// Required: true
-	Value *int64 `json:"value"`
+	Value *string `json:"value"`
 }
 
 // Validate validates this IP address role
@@ -549,7 +550,7 @@ type IPAddressStatus struct {
 
 	// value
 	// Required: true
-	Value *int64 `json:"value"`
+	Value *string `json:"value"`
 }
 
 // Validate validates this IP address status

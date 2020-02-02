@@ -13,6 +13,7 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
+//
 
 package models
 
@@ -75,8 +76,8 @@ type WritableService struct {
 
 	// Protocol
 	// Required: true
-	// Enum: [6 17]
-	Protocol *int64 `json:"protocol"`
+	// Enum: [tcp udp]
+	Protocol *string `json:"protocol"`
 
 	// Virtual machine
 	VirtualMachine *int64 `json:"virtual_machine,omitempty"`
@@ -209,8 +210,8 @@ func (m *WritableService) validatePort(formats strfmt.Registry) error {
 var writableServiceTypeProtocolPropEnum []interface{}
 
 func init() {
-	var res []int64
-	if err := json.Unmarshal([]byte(`[6,17]`), &res); err != nil {
+	var res []string
+	if err := json.Unmarshal([]byte(`["tcp","udp"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {
@@ -218,8 +219,17 @@ func init() {
 	}
 }
 
+const (
+
+	// WritableServiceProtocolTCP captures enum value "tcp"
+	WritableServiceProtocolTCP string = "tcp"
+
+	// WritableServiceProtocolUDP captures enum value "udp"
+	WritableServiceProtocolUDP string = "udp"
+)
+
 // prop value enum
-func (m *WritableService) validateProtocolEnum(path, location string, value int64) error {
+func (m *WritableService) validateProtocolEnum(path, location string, value string) error {
 	if err := validate.Enum(path, location, value, writableServiceTypeProtocolPropEnum); err != nil {
 		return err
 	}
