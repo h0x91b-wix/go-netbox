@@ -21,7 +21,6 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"encoding/json"
 	"strconv"
 
 	strfmt "github.com/go-openapi/strfmt"
@@ -369,7 +368,7 @@ type PrefixFamily struct {
 
 	// value
 	// Required: true
-	Value json.Number `json:"value"`
+	Value *int64 `json:"value"`
 }
 
 // Validate validates this prefix family

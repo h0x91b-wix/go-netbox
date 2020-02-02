@@ -13263,7 +13263,10 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/WritablePrefix"
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/WritableAvailablePrefix"
+              }
             }
           }
         ],
@@ -25002,7 +25005,7 @@
               "type": "string"
             },
             "value": {
-              "type": "string"
+              "type": "integer"
             }
           },
           "readOnly": true
@@ -25075,6 +25078,18 @@
           "type": "string",
           "format": "date-time",
           "readOnly": true
+        }
+      }
+    },
+    "WritableAvailablePrefix": {
+      "required": [
+        "prefix_length"
+      ],
+      "type": "object",
+      "properties": {
+        "prefix_length": {
+          "title": "PrefixLength",
+          "type": "number"
         }
       }
     },
